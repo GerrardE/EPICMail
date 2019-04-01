@@ -148,8 +148,8 @@ const signup = (e) => {
       
       if (data.message === 'Success: User created successfully!') {
         Handler.alertMessage(data.data, 4, 'green');
-          alert(`Your Registration was Successful! Welcome to EPIC-Mail. ${data.data}`);
-          window.location.assign('/');
+        alert(`Your Registration was Successful! Welcome to EPIC-Mail. ${data.data}`);
+        window.location.assign('/');
         return;
       }
 
