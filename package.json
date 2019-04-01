@@ -1,0 +1,46 @@
+{
+  "name": "epicmail",
+  "version": "1.0.0",
+  "description": "FrontEnd for the EPIC-Mail web application",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test:dev",
+    "start": "nodemon app.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GerrardE/EPICMail.git"
+  },
+  "keywords": [
+    "EPIC-Mail",
+    "node.js",
+    "express.js",
+    "html",
+    "css"
+  ],
+  "author": "Gerrard Ezeugwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GerrardE/EPICMail/issues"
+  },
+  "homepage": "https://github.com/GerrardE/EPICMail#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "@babel/node": "^7.2.2",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "body-parser": "^1.18.3",
+    "dotenv": "^7.0.0",
+    "cors": "^2.8.5"
+   
+  }
+}
