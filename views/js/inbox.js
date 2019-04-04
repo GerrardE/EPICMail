@@ -27,7 +27,7 @@ const getMessages = () => {
                 <span class="time-right">${datum.createdon}</span>
             </div>
             <p class="para">${datum.subject}</p>
-            <a href="${targetUrl}/${datum.id}" type="submit" class="viewbtn">VIEW</a>
+            <a href="view.html" type="submit" class="viewbtn">VIEW</a>
             <a type="submit" class="deletebtn">DELETE</a>
         </div>`;
       });
