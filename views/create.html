@@ -32,13 +32,14 @@
             <h2 class="lead-title">Create Message</h2>
             <p>Welcome!</p>
             <div class="container">
-                <form action="#">
+                <form id="#">
                   <div class="row">
                     <div class="col-25">
                       <label for="rEmail">Recipient(s) Email</label>
                     </div>
                     <div class="col-75">
-                      <input type="email" id="rEmail" name="rEmail" placeholder="Your name..">
+                      <span class="alert"></span>
+                      <input type="email" id="toEmail" name="toEmail" placeholder="Recipient's email">
                     </div>
                   </div>
                   <div class="row">
@@ -46,6 +47,7 @@
                       <label for="subject">Subject</label>
                     </div>
                     <div class="col-75">
+                      <span class="alert"></span>
                       <input type="text" id="subject" name="subject" placeholder="Email Subject ...">
                     </div>
                   </div>
@@ -54,12 +56,14 @@
                       <label for="message">Message</label>
                     </div>
                     <div class="col-75">
+                      <span class="alert"></span>
                       <textarea id="message" name="message" placeholder="Write something.."></textarea>
                     </div>
                   </div>
                   <div class="row">
-                    <a type="submit" class="editbtn">SAVE</a>
-                    <a type="submit" class="viewbtn">SEND</a>
+                    <span class="alert"></span>
+                    <a id="saveDraft"  class="editbtn">SAVE</a>
+                    <a id="sendMail" class="viewbtn">SEND</a>
                   </div>
                 </form>
               </div>
@@ -70,5 +74,7 @@
           <p>Copyright (c) 2019 <a href="/"><strong>EPIC Mail</strong></a> All Rights Reserved.</p>
       </footer>
   <script src="js/script.js"></script>
+  <script src="js/handler.js"></script>
+  <script src="js/create.js"></script>
 </body>
 </html>

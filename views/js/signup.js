@@ -5,7 +5,7 @@ const signup = (e) => {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
 
-  fetch('https://epic-m.herokuapp.com/api/v2/auth/signup', {
+  fetch('http://localhost:5000/api/v2/auth/signup', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -148,12 +148,10 @@ const signup = (e) => {
       
       if (data.message === 'Success: User created successfully!') {
         Handler.alertMessage(data.data, 4, 'green');
-        alert(`Your Registration was Successful! Welcome to EPIC-Mail. ${data.data}`);
+        alert(data.credentials);
         window.location.assign('/');
         return;
       }
-
-      localStorage.setItem('token', data.token);
     })
     .catch((err) => {
       console.log(err);
