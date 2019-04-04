@@ -43,9 +43,8 @@ const getMessage = () => {
                       Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, 
                       augue velit cursus nunc,</p>
           </div>
-      
           <div class="container-chat">
-              <a type="submit" class="deletebtn">DELETE</a>
+              <a type="submit" class="deletebtn" id="delete" onclick="deleteMessage(${result.id})">DELETE</a>
           </div>
       </div>`;
       });
