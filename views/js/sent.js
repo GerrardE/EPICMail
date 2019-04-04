@@ -27,7 +27,7 @@ const getSentMessages = () => {
                   <p class="lead">Sent to: ${datum.email}</p>
                   <p class="para">${datum.subject}</p>
                   <a href="view.html" type="submit" class="viewbtn">VIEW</a>
-                  <a type="submit" class="deletebtn">CANCEL</a>
+                  <a type="submit" class="deletebtn" id="delete" onclick="deleteMessage(${datum.id})">CANCEL</a>
                </div>`;
       });
 

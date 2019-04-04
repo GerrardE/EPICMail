@@ -28,7 +28,7 @@ const getMessages = () => {
             </div>
             <p class="para">${datum.subject}</p>
             <a href="view.html" type="submit" class="viewbtn">VIEW</a>
-            <a type="submit" class="deletebtn">DELETE</a>
+            <a type="submit" class="deletebtn" id="delete" onclick="deleteMessage(${datum.id})">DELETE</a>
         </div>`;
       });
 
