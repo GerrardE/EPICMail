@@ -98,6 +98,7 @@ aside{
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  cursor: pointer;
 }
 
 #main {
@@ -152,6 +153,7 @@ button:hover {
   padding: 10px 18px;
   /* background-color: #cf6159; */
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .loginbtn {
@@ -159,6 +161,7 @@ button:hover {
   padding: 10px 18px;
   border-radius: 4px;
   float: right;
+  cursor: pointer;
 }
 
 .deletebtn, .editbtn, .viewbtn {
@@ -166,7 +169,8 @@ button:hover {
   font-size: 14px;
   padding: 10px 18px;
   font-family: 'Lucida Sans', sans-serif;
-  color: rgb(22, 21, 21)
+  color: rgb(22, 21, 21);
+  cursor: pointer;
 }
 
 .btnfloat {
@@ -175,16 +179,19 @@ button:hover {
 .viewbtn:hover {
   background-color: rgb(62, 105, 223);
   color: #fff;
+  cursor: pointer;
 }
 
 .deletebtn:hover {
   background-color: #f44336;
   color: #fff;
+  cursor: pointer;
 }
 
 .editbtn:hover {
   background-color: #4caf50;
   color: #fff;
+  cursor: pointer;
 }
 
 input[type=submit] {
@@ -234,19 +241,23 @@ label {
   border-radius: 3px;
   cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .btn:hover {
-  color: #fff
+  color: #fff;
+  cursor: pointer;
 }
 
 .savebtn {
   width: 70px;
   background-color: #4caf50;
+  cursor: pointer;
 }
 
 .sendbtn{
   width: 70px;
+  cursor: pointer;
 }
 
 span.price {
@@ -416,10 +427,12 @@ input {
   cursor: pointer;
   transition: 0.3s;
   border-radius: 0;
+  cursor: pointer;
 }
 
 .addBtn:hover {
   background-color: #bbb;
+  cursor: pointer;
 }
 
 /*=== LEADER ===*/
