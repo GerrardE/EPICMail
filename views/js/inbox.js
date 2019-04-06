@@ -1,6 +1,10 @@
 const token = window.localStorage.getItem('token');
+if (!token) {
+  window.location.assign('index.html');
+  alert('Please login');
+}
 
-const targetUrl = 'http://localhost:5000/api/v2/messages/unread';
+const targetUrl = 'http://epic-m.herokuapp.com/api/v2/messages/unread';
 
 const getMessages = () => {
   fetch(targetUrl, {
@@ -27,7 +31,7 @@ const getMessages = () => {
                 <span class="time-right">${datum.createdon}</span>
             </div>
             <p class="para">${datum.subject}</p>
-            <a href="view.html" type="submit" class="viewbtn">VIEW</a>
+            <a href="view.html" type="submit" class="viewbtn" onclick="Handler.saveId(${datum.id})">VIEW</a>
             <a type="submit" class="deletebtn">DELETE</a>
         </div>`;
       });

@@ -5,7 +5,7 @@ const signup = (e) => {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
 
-  fetch('http://localhost:5000/api/v2/auth/signup', {
+  fetch('http://epic-m.herokuapp.com/api/v2/auth/signup', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
