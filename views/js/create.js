@@ -1,4 +1,8 @@
 const token = window.localStorage.getItem('token');
+if (!token) {
+  window.location.assign('index.html');
+  alert('Please login');
+}
 
 const send = (e) => {
   e.preventDefault();
@@ -7,7 +11,7 @@ const send = (e) => {
   const toEmail = document.getElementById('toEmail').value.trim();
   const status = 'sent';
 
-  const targetUrl = 'http://localhost:5000/api/v2/messages';
+  const targetUrl = 'http://epic-m.herokuapp.com/api/v2/messages';
 
   fetch(targetUrl, {
     method: 'POST',

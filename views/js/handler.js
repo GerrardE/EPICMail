@@ -5,7 +5,7 @@ class Handler {
     alert.style.color = color;
     setInterval(() => {
       alert.innerHTML = '';
-    }, (6400));   
+    }, (6400));
   }
 
   static clearAlert() {
@@ -18,6 +18,14 @@ class Handler {
     document.getElementById('lastName').value = '';
     document.getElementById('email').value = '';
     document.getElementById('password').value = '';
+  }
+
+  static saveId(id) {
+    window.localStorage.setItem('id', id);
+  }
+
+  static removeId() {
+    window.localStorage.removeItem('id', id);
   }
 }
 

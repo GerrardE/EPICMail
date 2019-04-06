@@ -1,7 +1,14 @@
-const url = window.localStorage.getItem('url')
-const token = window.localStorage.getItem('token');
 
-const getMessage = () => {
+const viewMessage = () => {
+  let urlId = window.localStorage.getItem('id');
+  const token = window.localStorage.getItem('token');
+  if (!token) {
+    window.location.assign('index.html');
+    alert('Please login');
+  }
+
+  console.log(urlId)
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${urlId}`;
   fetch(targetUrl, {
     method: 'GET',
     headers: {
@@ -12,21 +19,16 @@ const getMessage = () => {
   })
     .then(res => res.json())
     .then((data) => {
+      console.log(data)
       let message = '';
       console.log('connected');
-      const result = data.retrievedMessage;
-
-      message = 'Error: mail not found.';
-      if (data.message === message) {
-        Handler.alertMessage(data.message, 0, 'red');
-        return;
-      }
-
+      const result = data.retrievedMessage[0];
+      
       let output = `
       <h2 class="lead-title">${result.subject}</h2>
       <div class="timeline">
           <div class="container-chat">
-              <span class="time-right">${result.createdon}/span>
+              <span class="time-right">${result.createdon}</span>
               <p>${result.subject} From ${result.email}</p>
               <p class="para">${result.message}</p>
           </div>
@@ -47,15 +49,20 @@ const getMessage = () => {
               <a type="submit" class="deletebtn" id="delete" onclick="deleteMessage(${result.id})">DELETE</a>
           </div>
       </div>`;
-      });
+      
+      message = 'Error: mail not found.';
+      if (data.message === message) {
+        Handler.alertMessage(data.message, 0, 'red');
+        return;
+      }
 
       document.getElementById('main').innerHTML = output;
-      window.localStorage.removeItem('url')
       console.log(data.message);
     })
     .catch((err) => {
       console.log(err);
     });
+  
 };
 
-getMessage();
+viewMessage();
