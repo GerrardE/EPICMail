@@ -65,7 +65,8 @@ const newGroup = () => {
 
       if (data.message === 'Success: group created successfully!') {
         Handler.alertMessage(data.message, 0, 'green');
-        alert(data.message)
+        alert(data.message);
+        window.location.reload();
       }
     })
     .catch((err) => {
