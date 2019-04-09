@@ -24,8 +24,16 @@ class Handler {
     window.localStorage.setItem('id', id);
   }
 
+  static saveGroup(id, name) {
+    window.localStorage.setItem('id', id);
+    window.localStorage.setItem('name', name);
+  }
+
+  static saveName(name) {
+    window.localStorage.setItem('name', name);
+  }
+
   static removeId() {
     window.localStorage.removeItem('id', id);
   }
 }
-
