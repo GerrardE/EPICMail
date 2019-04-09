@@ -25,13 +25,12 @@
             <a href="drafts.html" class="">Drafts</a>
          </div>
          <div id="main" class="">
-            <h2 class="lead-title">Groups</h2>
-            <div id="myDIV" class="header">
+            <h2 class="lead-title">Edit Group Name <a href="admin.html" class="editbtn btnfloat"> &lt;&lt; BACK</a></h2>
+            <div id="header" class="header">
                <span class="alert"></span>
-               <input type="text" id="groupName" placeholder="Group Name...">
-               <span onclick="newGroup()" class="addBtn">Add</span>
+               <input type="text" id="groupName" required placeholder="e.g: Titanium">
+               <span id="editGroup" class="addBtn">Save</span>
             </div>
-            <ul id="myUL"></ul>
          </div>
       </aside>
       <footer class="footer">
@@ -39,8 +38,6 @@
       </footer>
       <script src="js/script.js"></script>
       <script src="js/handler.js"></script>
-      <script src="js/admin.js"></script>
-      <script src="js/groups.js"></script>
       <script src="js/editgroup.js"></script>
    </body>
 </html>

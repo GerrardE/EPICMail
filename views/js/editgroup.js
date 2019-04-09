@@ -4,13 +4,14 @@ if (!token) {
   alert('Please login');
 }
 
-const newGroup = () => {
+const id = window.localStorage.getItem('id');
+
+const editGroup = () => {
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/groups/${id}/name`;
   const name = document.getElementById('groupName').value.trim();
 
-  const targetUrl = 'https://epic-m.herokuapp.com/api/v2/groups';
-
   fetch(targetUrl, {
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       Accept: 'application/json, text/plain, */*',
       'Content-type': 'application/json',
@@ -19,12 +20,12 @@ const newGroup = () => {
     body: JSON.stringify({
       name
     })
-}) 
+  })
     .then(res => res.json())
     .then((data) => {
-      let message = '';
       console.log('connected');
-     
+      let message = '';
+
       // return some error messages
       message = 'Error: name field cannot be empty';
       if (data.message === message) {
@@ -50,6 +51,12 @@ const newGroup = () => {
         return;
       }
 
+      message = 'Error: group not found';
+      if (data.message === message) {
+        Handler.alertMessage(data.message, 0, 'red');
+        return;
+      }
+
       message = 'Error: server did not respond. Please try again.';
       if (data.message === message) {
         Handler.alertMessage(data.message, 0, 'red');
@@ -62,13 +69,17 @@ const newGroup = () => {
         return;
       }
 
-      if (data.message === 'Success: group created successfully!') {
+      if (data.message === 'Success: group edited successfully!') {
         Handler.alertMessage(data.message, 0, 'green');
         alert(data.message);
-        window.location.reload();
+        window.location.assign('admin.html');
       }
+
+      console.log(data.message);
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+document.getElementById('editGroup').addEventListener('click', editGroup);
