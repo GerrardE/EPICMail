@@ -11,7 +11,7 @@ const send = (e) => {
   const toEmail = document.getElementById('toEmail').value.trim();
   const status = 'sent';
 
-  const targetUrl = 'http://epic-m.herokuapp.com/api/v2/messages';
+  const targetUrl = 'https://epic-m.herokuapp.com/api/v2/messages';
 
   fetch(targetUrl, {
     method: 'POST',
@@ -28,7 +28,6 @@ const send = (e) => {
     .then((data) => {
       let message = '';
       console.log('connected');
-      console.log(data);
 
       // return some error messages
       message = 'Error: email field cannot be empty.';
@@ -96,7 +95,7 @@ const draft = (e) => {
   const toEmail = document.getElementById('toEmail').value.trim();
   const status = 'draft';
 
-  const targetUrl = 'http://localhost:5000/api/v2/messages';
+  const targetUrl = 'https://epic-m.herokuapp.com/api/v2/messages';
 
   fetch(targetUrl, {
     method: 'POST',
@@ -113,7 +112,6 @@ const draft = (e) => {
     .then((data) => {
       let message = '';
       console.log('connected');
-      console.log(data);
       // return some error messages
       message = 'Error: email field cannot be empty.';
       if (data.message === message) {

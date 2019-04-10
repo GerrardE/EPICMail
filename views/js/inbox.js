@@ -4,7 +4,7 @@ if (!token) {
   alert('Please login');
 }
 
-const targetUrl = 'http://epic-m.herokuapp.com/api/v2/messages/unread';
+const targetUrl = 'https://epic-m.herokuapp.com/api/v2/messages/unread';
 
 const getMessages = () => {
   fetch(targetUrl, {

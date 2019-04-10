@@ -4,7 +4,7 @@ if (!token) {
   alert('Please login');
 }
 
-const targetUrl = 'http://epic-m.herokuapp.com/api/v2/messages/sent';
+const targetUrl = 'https://epic-m.herokuapp.com/api/v2/messages/sent';
 
 const getSentMessages = () => {
   fetch(targetUrl, {
