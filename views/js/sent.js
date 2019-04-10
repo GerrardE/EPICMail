@@ -28,7 +28,7 @@ const getSentMessages = () => {
                   <div class="top">
                      <span class="time-right">${datum.createdon}</span>
                   </div>
-                  <p class="lead">Sent to: ${datum.email}</p>
+                  <p class="lead">To: ${datum.email}</p>
                   <p class="para">${datum.subject}</p>
                   <a href="view.html" type="submit" class="viewbtn" onclick="Handler.saveId(${datum.id})">VIEW</a>
                   <a type="submit" class="deletebtn">CANCEL</a>

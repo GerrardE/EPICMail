@@ -22,7 +22,7 @@ const getGroups = () => {
       let output = '';
       result.forEach((res) => {
         output += `
-        <li class="group">${res.name}<a href="editgroup.html" class="edit" onclick="Handler.saveId(${res.id}); Handler.saveName(${res.name})">EDIT</a><span class="close" onclick="deleteGroup(${res.id})" value="">DEL</span><a class="add" href="addusers.html">USERS</a></li>`;
+        <li class="group">${res.name}<a href="editgroup.html" class="edit" onclick="Handler.saveId(${res.id})">EDIT</a><span class="close" onclick="deleteGroup(${res.id})">DEL</span><a class="add" onclick="Handler.saveId(${res.id})" href="addusers.html">USERS</a></li>`;
       });
 
       document.getElementById('myUL').innerHTML = output;

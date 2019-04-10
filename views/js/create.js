@@ -80,7 +80,8 @@ const send = (e) => {
 
       if (data.message === 'Success: message sent successfully!') {
         Handler.alertMessage(data.message, 0, 'green');
-        alert(`${data.message}`)
+        alert(`${data.message}`);
+        window.location.assign('sent.html');
       }
     })
     .catch((err) => {
