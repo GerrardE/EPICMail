@@ -1,7 +1,7 @@
 
 const deleteMessage = (id) => {
   const userConfirm = confirm('Are you sure you want to delete this mail?')
-  const targetUrl = `http://localhost:5000/api/v2/messages/${id}`;
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${id}`;
   
   if (userConfirm === true) {
     fetch(targetUrl, {

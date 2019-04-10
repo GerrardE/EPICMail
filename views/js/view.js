@@ -7,7 +7,6 @@ const viewMessage = () => {
     alert('Please login');
   }
 
-  console.log(urlId)
   const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${urlId}`;
   fetch(targetUrl, {
     method: 'GET',
@@ -57,7 +56,6 @@ const viewMessage = () => {
       }
 
       document.getElementById('main').innerHTML = output;
-      console.log(data.message);
     })
     .catch((err) => {
       console.log(err);

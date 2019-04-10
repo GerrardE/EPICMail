@@ -3,7 +3,7 @@ const login = (e) => {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
 
-  fetch('http://epic-m.herokuapp.com/api/v2/auth/login', {
+  fetch('https://epic-m.herokuapp.com/api/v2/auth/login', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -16,7 +16,6 @@ const login = (e) => {
     .then(res => res.json())
     .then((data) => {
       let message = '';
-      console.log(data);
       console.log('connected')
       // return some error messages
       message = 'Error: email field cannot be empty';
