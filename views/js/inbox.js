@@ -27,7 +27,7 @@ const getMessages = () => {
         output += `
         <div class="container-chat">
             <div class="top">
-                <span class="title">${datum.email}</span>
+                <span class="lead">From: ${datum.email}</span>
                 <span class="time-right">${datum.createdon}</span>
             </div>
             <p class="para">${datum.subject}</p>
