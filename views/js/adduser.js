@@ -94,4 +94,78 @@ const addUser = () => {
     });
 };
 
+const getUsers = () => {
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/groups/${id}/users`;
+  fetch(targetUrl, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then((data) => {
+      console.log('connected');
+      const result = data.returnedMembers;
+
+      let output = '';
+      result.forEach((res) => {
+        output += `
+        <li class="user">${res.email}<span class="close" onclick="deleteUser(${res.memberid})">DEL</span></li>`;
+      });
+
+      document.getElementById('userUL').innerHTML = output;
+      console.log('groups retrieved');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// To delete a certain group user
+const deleteUser = (memberid) => {
+  const userConfirm = confirm('Are you sure you want to delete this user?')
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/groups/${id}/users/${memberid}`;
+
+  if (userConfirm === true) {
+    fetch(targetUrl, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        Authorization: token
+      },
+    })
+      .then(res => res.json())
+      .then((data) => {
+        let message = '';
+
+        message = 'Error: group member could not be deleted. Try again.';
+        if (data.message === message) {
+          Handler.alertMessage(data.message, 0, 'red');
+          return;
+        }
+
+        message = 'Error: group does not exist';
+        if (data.message === message) {
+          Handler.alertMessage(data.message, 0, 'red');
+          return;
+        }
+
+        message = 'Success: group member deleted successfully';
+        if (data.message === message) {
+          alert(data.message);
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    window.location.reload();
+  }
+};
+
 document.getElementById('addUser').addEventListener('click', addUser);
+getUsers();

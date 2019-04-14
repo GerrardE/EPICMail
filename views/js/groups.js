@@ -33,4 +33,49 @@ const getGroups = () => {
     });
 };
 
+// To delete a certain group
+const deleteGroup = (groupid) => {
+  const userConfirm = confirm('Are you sure you want to delete this group?')
+  const targetLink = `https://epic-mail.herokuapp.com/api/v2/groups/${groupid}`;
+  const token = localStorage.getItem('token');
+
+  if (userConfirm === true) {
+    fetch(targetLink, {
+      method: 'delete',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-type': 'application/json',
+        Authorization: token
+      },
+    })
+      .then(res => res.json())
+      .then((data) => {
+        let message = '';
+
+        message = 'Error: server not responding. Try again';
+        if (data.message === message) {
+          Handler.alertMessage(data.message, 0, 'red');
+          return;
+        }
+
+        message = 'Error: group could not be deleted. Try again';
+        if (data.message === message) {
+          Handler.alertMessage(data.message, 0, 'red');
+          return;
+        }
+
+        message = 'Success: group deleted successfully!';
+        if (data.message === message) {
+          alert(data.message);
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    window.location.reload();
+  }
+};
+
 getGroups();
