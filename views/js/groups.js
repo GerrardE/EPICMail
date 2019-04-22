@@ -3,50 +3,20 @@ if (!token) {
   alert('Please login');
 }
 
-const targetUrl = 'https://epic-m.herokuapp.com/api/v2/groups';
-
-const getGroups = () => {
-  fetch(targetUrl, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'Content-type': 'application/json',
-      Authorization: token
-    }
-  })
-    .then(res => res.json())
-    .then((data) => {
-      console.log('connected');
-      const result = data.retrievedGroups;
-      
-      let output = '';
-      result.forEach((res) => {
-        output += `
-        <li class="group">${res.name}<a href="editgroup.html" class="edit" onclick="Handler.saveId(${res.id})">EDIT</a><span class="close" onclick="deleteGroup(${res.id})">DEL</span><a class="add" onclick="Handler.saveId(${res.id})" href="addusers.html">USERS</a></li>`;
-      });
-
-      document.getElementById('myUL').innerHTML = output;
-      console.log('groups retrieved');
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 // To delete a certain group
 const deleteGroup = (groupid) => {
-  const userConfirm = confirm('Are you sure you want to delete this group?')
-  const targetLink = `https://epic-mail.herokuapp.com/api/v2/groups/${groupid}`;
   const token = localStorage.getItem('token');
+  const targetLink = `https://epic-m.herokuapp.com/api/v2/groups/${groupid}`;
+  const userConfirm = confirm('Are you sure you want to delete this group?');
 
   if (userConfirm === true) {
     fetch(targetLink, {
-      method: 'delete',
+      method: 'DELETE',
       headers: {
         Accept: 'application/json, text/plain, */*',
         'Content-type': 'application/json',
         Authorization: token
-      },
+      }
     })
       .then(res => res.json())
       .then((data) => {
@@ -76,6 +46,36 @@ const deleteGroup = (groupid) => {
   } else {
     window.location.reload();
   }
+};
+
+const getGroups = () => {
+  const token = localStorage.getItem('token');
+  const targetUrl = 'https://epic-m.herokuapp.com/api/v2/groups';
+  fetch(targetUrl, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+      Authorization: token
+    }
+  })
+    .then(res => res.json())
+    .then((data) => {
+      console.log('connected');
+      const result = data.retrievedGroups;
+      
+      let output = '';
+      result.forEach((res) => {
+        output += `
+        <li class="group">${res.name}<a href="editgroup.html" class="edit" onclick="Handler.saveId(${res.id})">EDIT</a><span class="close" onclick="deleteGroup(${res.id})">DEL</span><a class="mail" onclick="Handler.saveId(${res.id})" href="groupmail.html">MAIL</a><a class="add" onclick="Handler.saveId(${res.id})" href="addusers.html">USERS</a></li>`;
+      });
+
+      document.getElementById('myUL').innerHTML = output;
+      console.log('groups retrieved');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 getGroups();

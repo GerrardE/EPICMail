@@ -22,26 +22,16 @@
       <aside>
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="admin.html">Groups</a>
+          <a href="admin.html" class="select">Groups</a>
           <a href="inbox.html" class="">Inbox</a>
-          <a href="create.html" class="select">Create</a>
+          <a href="create.html" class="">Create</a>
           <a href="sent.html" class="">Sent</a>
           <a href="drafts.html" class="">Drafts</a>
        </div>
        <div id="main" class="">
-            <h2 class="lead-title">Create Message</h2>
-            <p>Welcome!</p>
+            <h2 class="lead-title">Send Group Mail</h2>
             <div class="container">
                 <form id="#">
-                  <div class="row">
-                    <div class="col-25">
-                      <label for="rEmail">Recipient(s) Email</label>
-                    </div>
-                    <div class="col-75">
-                      <span class="alert"></span>
-                      <input type="email" id="toEmail" name="toEmail" placeholder="Recipient's email">
-                    </div>
-                  </div>
                   <div class="row">
                     <div class="col-25">
                       <label for="subject">Subject</label>
@@ -61,7 +51,6 @@
                     </div>
                   </div>
                   <div class="row">
-                    <span class="alert"></span>
                     <a id="saveDraft"  class="editbtn">SAVE</a>
                     <a id="sendMail" class="viewbtn">SEND</a>
                   </div>
@@ -75,6 +64,6 @@
       </footer>
   <script src="js/script.js"></script>
   <script src="js/handler.js"></script>
-  <script src="js/create.js"></script>
+  <script src="js/groupmail.js"></script>
 </body>
 </html>
