@@ -1,11 +1,11 @@
 
 const deleteMessage = (id) => {
   const userConfirm = confirm('Are you sure you want to delete this mail?')
-  const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${id}`;
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${id}/delete`;
   
   if (userConfirm === true) {
     fetch(targetUrl, {
-      method: 'DELETE',
+      method: 'PATCH',
       headers: {
         Accept: 'application/json, text/plain, */*',
         'Content-type': 'application/json',
@@ -22,7 +22,7 @@ const deleteMessage = (id) => {
           return;
         }
 
-        message = 'Error: server not responding. Please try again.';
+        message = 'Error: mail could not be deleted either because the mail was not found, or something bad happened. Please try again.';
         if (data.message === message) {
           Handler.alertMessage(data.message, 0, 'red');
           return;

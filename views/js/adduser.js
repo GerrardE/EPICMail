@@ -81,7 +81,8 @@ const addUser = () => {
         return;
       }
 
-      if (data.message === 'Group member added successfully!') {
+      message = 'Group member added successfully!';
+      if (data.message === message) {
         Handler.alertMessage(data.message, 0, 'green');
         alert(data.message);
         window.location.reload();
@@ -135,7 +136,7 @@ const deleteUser = (memberid) => {
         Accept: 'application/json, text/plain, */*',
         'Content-type': 'application/json',
         Authorization: token
-      },
+      }
     })
       .then(res => res.json())
       .then((data) => {

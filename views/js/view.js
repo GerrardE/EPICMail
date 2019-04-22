@@ -1,11 +1,39 @@
+const token = window.localStorage.getItem('token');
+if (!token) {
+  window.location.assign('index.html');
+  alert('Please login');
+}
+
+// update message status to 'read'
+const updateStatus = (id) => {
+  const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${id}`;
+  const status = 'read';
+
+  fetch(targetUrl, {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-type': 'application/json',
+      Authorization: token
+    },
+    body: JSON.stringify({
+      status
+    })
+  })
+    .then(res => res.json())
+    .then((data) => {
+      console.log('connected');
+
+      // handle error messages
+      console.log(data.message);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 const viewMessage = () => {
   let urlId = window.localStorage.getItem('id');
-  const token = window.localStorage.getItem('token');
-  if (!token) {
-    window.location.assign('index.html');
-    alert('Please login');
-  }
 
   const targetUrl = `https://epic-m.herokuapp.com/api/v2/messages/${urlId}`;
   fetch(targetUrl, {
@@ -48,7 +76,7 @@ const viewMessage = () => {
               <a type="submit" class="deletebtn" id="delete" onclick="deleteMessage(${result.id})">DELETE</a>
           </div>
       </div>`;
-      
+
       message = 'Error: mail not found.';
       if (data.message === message) {
         Handler.alertMessage(data.message, 0, 'red');
@@ -56,11 +84,11 @@ const viewMessage = () => {
       }
 
       document.getElementById('main').innerHTML = output;
+      updateStatus(urlId);
     })
     .catch((err) => {
       console.log(err);
     });
-  
 };
 
 viewMessage();
